@@ -9,21 +9,35 @@
 /* Begin PBXBuildFile section */
 		874D935329945C2D00CD4371 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D935229945C2D00CD4371 /* AppDelegate.swift */; };
 		874D935529945C2D00CD4371 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D935429945C2D00CD4371 /* SceneDelegate.swift */; };
-		874D935729945C2D00CD4371 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D935629945C2D00CD4371 /* ViewController.swift */; };
-		874D935A29945C2D00CD4371 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874D935829945C2D00CD4371 /* Main.storyboard */; };
 		874D935C29945C2E00CD4371 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 874D935B29945C2E00CD4371 /* Assets.xcassets */; };
 		874D935F29945C2E00CD4371 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874D935D29945C2E00CD4371 /* LaunchScreen.storyboard */; };
+		874DC7E22996D06700EFC805 /* Rest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DC7E12996D06700EFC805 /* Rest.swift */; };
+		874DC7E42999E66C00EFC805 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DC7E32999E66C00EFC805 /* LoginController.swift */; };
+		874DC7E62999E67A00EFC805 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DC7E52999E67A00EFC805 /* LoginView.swift */; };
+		874DC7E82999F6A500EFC805 /* CadastroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DC7E72999F6A500EFC805 /* CadastroController.swift */; };
+		874DC7EA2999F6B200EFC805 /* CadastroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DC7E92999F6B200EFC805 /* CadastroView.swift */; };
+		874DC7F0299A99EE00EFC805 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DC7EF299A99EE00EFC805 /* LoginRequest.swift */; };
+		874DC7F2299C5BD800EFC805 /* CadastroRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DC7F1299C5BD800EFC805 /* CadastroRequest.swift */; };
+		874DC7F4299C60D500EFC805 /* CadastroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DC7F3299C60D500EFC805 /* CadastroModel.swift */; };
+		874DC7F6299C64F400EFC805 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DC7F5299C64F400EFC805 /* LoginModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		874D934F29945C2D00CD4371 /* DanellisTravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanellisTravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		874D935229945C2D00CD4371 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		874D935429945C2D00CD4371 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		874D935629945C2D00CD4371 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		874D935929945C2D00CD4371 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		874D935B29945C2E00CD4371 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		874D935E29945C2E00CD4371 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		874D936029945C2E00CD4371 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		874DC7E12996D06700EFC805 /* Rest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rest.swift; sourceTree = "<group>"; };
+		874DC7E32999E66C00EFC805 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		874DC7E52999E67A00EFC805 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		874DC7E72999F6A500EFC805 /* CadastroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroController.swift; sourceTree = "<group>"; };
+		874DC7E92999F6B200EFC805 /* CadastroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroView.swift; sourceTree = "<group>"; };
+		874DC7EF299A99EE00EFC805 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		874DC7F1299C5BD800EFC805 /* CadastroRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroRequest.swift; sourceTree = "<group>"; };
+		874DC7F3299C60D500EFC805 /* CadastroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroModel.swift; sourceTree = "<group>"; };
+		874DC7F5299C64F400EFC805 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +70,46 @@
 		874D935129945C2D00CD4371 /* DanellisTravel */ = {
 			isa = PBXGroup;
 			children = (
+				874DC7EE299A995E00EFC805 /* Pacotes */,
+				874DC7EC299A096C00EFC805 /* Cadastro */,
+				874DC7EB299A096100EFC805 /* Login */,
 				874D935229945C2D00CD4371 /* AppDelegate.swift */,
 				874D935429945C2D00CD4371 /* SceneDelegate.swift */,
-				874D935629945C2D00CD4371 /* ViewController.swift */,
-				874D935829945C2D00CD4371 /* Main.storyboard */,
 				874D935B29945C2E00CD4371 /* Assets.xcassets */,
 				874D935D29945C2E00CD4371 /* LaunchScreen.storyboard */,
 				874D936029945C2E00CD4371 /* Info.plist */,
+				874DC7E12996D06700EFC805 /* Rest.swift */,
 			);
 			path = DanellisTravel;
+			sourceTree = "<group>";
+		};
+		874DC7EB299A096100EFC805 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				874DC7E52999E67A00EFC805 /* LoginView.swift */,
+				874DC7E32999E66C00EFC805 /* LoginController.swift */,
+				874DC7EF299A99EE00EFC805 /* LoginRequest.swift */,
+				874DC7F5299C64F400EFC805 /* LoginModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		874DC7EC299A096C00EFC805 /* Cadastro */ = {
+			isa = PBXGroup;
+			children = (
+				874DC7E92999F6B200EFC805 /* CadastroView.swift */,
+				874DC7E72999F6A500EFC805 /* CadastroController.swift */,
+				874DC7F1299C5BD800EFC805 /* CadastroRequest.swift */,
+				874DC7F3299C60D500EFC805 /* CadastroModel.swift */,
+			);
+			path = Cadastro;
+			sourceTree = "<group>";
+		};
+		874DC7EE299A995E00EFC805 /* Pacotes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pacotes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +172,6 @@
 			files = (
 				874D935F29945C2E00CD4371 /* LaunchScreen.storyboard in Resources */,
 				874D935C29945C2E00CD4371 /* Assets.xcassets in Resources */,
-				874D935A29945C2D00CD4371 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +182,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				874D935729945C2D00CD4371 /* ViewController.swift in Sources */,
+				874DC7E82999F6A500EFC805 /* CadastroController.swift in Sources */,
+				874DC7F2299C5BD800EFC805 /* CadastroRequest.swift in Sources */,
+				874DC7E62999E67A00EFC805 /* LoginView.swift in Sources */,
+				874DC7F0299A99EE00EFC805 /* LoginRequest.swift in Sources */,
+				874DC7E42999E66C00EFC805 /* LoginController.swift in Sources */,
+				874DC7E22996D06700EFC805 /* Rest.swift in Sources */,
+				874DC7F6299C64F400EFC805 /* LoginModel.swift in Sources */,
+				874DC7F4299C60D500EFC805 /* CadastroModel.swift in Sources */,
 				874D935329945C2D00CD4371 /* AppDelegate.swift in Sources */,
 				874D935529945C2D00CD4371 /* SceneDelegate.swift in Sources */,
+				874DC7EA2999F6B200EFC805 /* CadastroView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		874D935829945C2D00CD4371 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				874D935929945C2D00CD4371 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		874D935D29945C2E00CD4371 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +336,6 @@
 				INFOPLIST_FILE = DanellisTravel/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +363,6 @@
 				INFOPLIST_FILE = DanellisTravel/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

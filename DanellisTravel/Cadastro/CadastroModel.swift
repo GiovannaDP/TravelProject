@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct CadastroModel: Codable {
+    let email, name, password, phone: String
+    let username: String
+}

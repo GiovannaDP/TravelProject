@@ -12,9 +12,9 @@ class LoginView: UIView {
     
     init() {
         super.init(frame: .zero)
-        backgroundColor = .white
-        
+        backgroundColor = UIColor.init(red: 100/255, green: 169/255, blue: 233/255, alpha: 1.0)
         setupView()
+        setupItens()
         configuraConstraints()
         
     }
@@ -26,7 +26,7 @@ class LoginView: UIView {
     lazy var firstView: UIView = {
         let view = UIView(frame: UIScreen.main.bounds)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .blue
+        view.backgroundColor = UIColor.init(red: 100/255, green: 169/255, blue: 233/255, alpha: 1.0)
         return view
     }()
     
@@ -35,8 +35,16 @@ class LoginView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.text = "Travel"
-        label.font = .systemFont(ofSize: 38.0, weight: .semibold)
+        label.font = UIFont(name: "IowanOldStyle-Bold", size: 32)
         label.textColor = .white
+        return label
+    }()
+    
+    lazy var usernameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Username"
+        label.font = UIFont(name: "Kailasa-Bold", size: 18)
         return label
     }()
     
@@ -44,15 +52,22 @@ class LoginView: UIView {
         let text = UITextField()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.backgroundColor = .white
-        text.text = "Digite seu username"
+        text.keyboardType = .numberPad
         return text
+    }()
+    
+    lazy var passwordLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Password"
+        label.font = UIFont(name: "Kailasa-Bold", size: 18)
+        return label
     }()
     
     lazy var passwordText: UITextField = {
         let text = UITextField()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.backgroundColor = .white
-        text.text = "Digite sua senha"
         return text
     }()
     
@@ -60,7 +75,9 @@ class LoginView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Login", for: .normal)
-        button.tintColor = .white
+        button.titleLabel?.font = UIFont(name: "Kailasa-Bold", size: 18)
+        button.backgroundColor = .white
+        button.setTitleColor(.black, for: .normal)
         return button
     }()
     
@@ -84,11 +101,19 @@ class LoginView: UIView {
     func setupView() {
         addSubview(firstView)
         firstView.addSubview(titleLabel)
+        firstView.addSubview(usernameLabel)
         firstView.addSubview(usernameText)
+        firstView.addSubview(passwordLabel)
         firstView.addSubview(passwordText)
         firstView.addSubview(loginButton)
         firstView.addSubview(cadastroLabel)
         firstView.addSubview(cadastroButton)
+    }
+    
+    func setupItens() {
+        usernameText.layer.cornerRadius = 8
+        passwordText.layer.cornerRadius = 8
+        loginButton.layer.cornerRadius = 15
     }
     
     func configuraConstraints(){
@@ -101,17 +126,25 @@ class LoginView: UIView {
             self.titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 50),
             self.titleLabel.centerXAnchor.constraint(equalTo: self.firstView.centerXAnchor),
             
-            self.usernameText.topAnchor.constraint(equalTo: self.titleLabel.topAnchor, constant: 100),
+            self.usernameLabel.topAnchor.constraint(equalTo: self.titleLabel.topAnchor, constant: 100),
+            self.usernameLabel.leadingAnchor.constraint(equalTo: firstView.leadingAnchor, constant: 20),
+            self.usernameLabel.trailingAnchor.constraint(equalTo: firstView.trailingAnchor, constant: -20),
+            
+            self.usernameText.topAnchor.constraint(equalTo: self.usernameLabel.topAnchor, constant: 25),
             self.usernameText.leadingAnchor.constraint(equalTo: firstView.leadingAnchor, constant: 20),
             self.usernameText.trailingAnchor.constraint(equalTo: firstView.trailingAnchor, constant: -20),
             
-            self.passwordText.topAnchor.constraint(equalTo: self.usernameText.topAnchor, constant: 40),
+            self.passwordLabel.topAnchor.constraint(equalTo: self.usernameText.topAnchor, constant: 40),
+            self.passwordLabel.leadingAnchor.constraint(equalTo: firstView.leadingAnchor, constant: 20),
+            self.passwordLabel.trailingAnchor.constraint(equalTo: firstView.trailingAnchor, constant: -20),
+            
+            self.passwordText.topAnchor.constraint(equalTo: self.passwordLabel.topAnchor, constant: 25),
             self.passwordText.leadingAnchor.constraint(equalTo: firstView.leadingAnchor, constant: 20),
             self.passwordText.trailingAnchor.constraint(equalTo: firstView.trailingAnchor, constant: -20),
             
             self.loginButton.topAnchor.constraint(equalTo: self.passwordText.topAnchor, constant: 60),
-            self.loginButton.leadingAnchor.constraint(equalTo: firstView.leadingAnchor, constant: 20),
-            self.loginButton.trailingAnchor.constraint(equalTo: firstView.trailingAnchor, constant: -20),
+            self.loginButton.leadingAnchor.constraint(equalTo: firstView.leadingAnchor, constant: 100),
+            self.loginButton.trailingAnchor.constraint(equalTo: firstView.trailingAnchor, constant: -100),
             
             self.cadastroLabel.centerXAnchor.constraint(equalTo: self.firstView.centerXAnchor),
             self.cadastroLabel.bottomAnchor.constraint(equalTo: firstView.bottomAnchor, constant: -50),
