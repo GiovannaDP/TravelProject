@@ -11,6 +11,7 @@ class LoginController: UIViewController {
     
     private var customView: LoginView? = nil
     private var model: LoginModel? = nil
+    private var userResponse: UserResponse? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class LoginController: UIViewController {
     
     func checkTexts() -> Bool{
         if customView?.usernameText.text?.count == 11 || customView?.usernameText.text?.count == 14 {
+            
             guard let numberPassword = customView?.passwordText.text?.count else { return false }
             return true
 
@@ -34,8 +36,21 @@ class LoginController: UIViewController {
     }
     
     func getData() {
-        guard let password = customView?.passwordText.text, let username = customView?.usernameText.text else { return }
-        model = LoginModel(password: password, username: username)
+        
+        guard let secureTextField = customView?.passwordText, let text = secureTextField.text, let username = customView?.usernameText.text else { return }
+            let unmaskedString = NSString(string: text)
+            let unmaskedText = unmaskedString.replacingOccurrences(of: "\u{25CF}", with: "")
+        
+        model = LoginModel(password: unmaskedString as String, username: username)
+    }
+    
+    func navigateToApp(user: UserResponse) {
+        if user.profileType == "CPF" {
+            let pacotes = PacotesController()
+            self.navigationController!.pushViewController(pacotes, animated: true)
+        } else {
+            //navigate to app vendas
+        }
     }
     
     @objc func login(_ sender: UIButton){
@@ -49,12 +64,15 @@ class LoginController: UIViewController {
             do {
                 let service = LoginRequest()
                 service.apiCall(model: model, callback: { result in
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [self] in
                         switch result {
                         case let .failure(error):
                             print(error)
                         case let .success(data):
-                            print(data)
+                            userResponse = data as! UserResponse
+                            guard let user = userResponse else { return }
+                            navigateToApp(user: user)
+                            print(data, user.name)
                         }
                     }
                 })

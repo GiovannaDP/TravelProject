@@ -12,9 +12,16 @@ struct LoginModel: Codable {
     let username: String
 }
 
-struct UserModel: Codable {
-    let id: Int
+struct UserResponse: Codable {
+    let userId: Int
     let name: String
-    let type: String
+    let profileType: String
     let username: String
+    
+    enum CodingKeys: String, CodingKey {
+        case userId = "id"
+        case name
+        case profileType
+        case username
+    }
 }

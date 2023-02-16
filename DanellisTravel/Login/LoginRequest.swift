@@ -7,19 +7,9 @@
 
 import Foundation
 
-enum ServiceErrorr: Error {
-    case invalidURL
-    case network(Error?)
-}
-
 class LoginRequest {
     
     func apiCall(model: LoginModel, callback: @escaping(Result<Any, ServiceError>) -> Void) {
-        guard let url = URL(string: "http://localhost:8080/travel/user") else {
-            return
-        }
-        
-        var urlComponents = URLComponents(string: "http://localhost:8080/travel/user")!
         
         var components = URLComponents(string: "http://localhost:8080/travel/user")!
             components.queryItems = [
@@ -39,8 +29,13 @@ class LoginRequest {
                 return
             }
             
-            let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
-            callback(.success(json))
+            do {
+                let userResponse = try JSONDecoder().decode(UserResponse.self, from: data)
+                callback(.success(userResponse))
+                
+            } catch {
+                callback(.failure(.decodeFail(error)))
+            }
         }
         task.resume()
     }

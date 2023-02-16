@@ -68,6 +68,7 @@ class LoginView: UIView {
         let text = UITextField()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.backgroundColor = .white
+        text.isSecureTextEntry = true
         return text
     }()
     
@@ -114,6 +115,7 @@ class LoginView: UIView {
         usernameText.layer.cornerRadius = 8
         passwordText.layer.cornerRadius = 8
         loginButton.layer.cornerRadius = 15
+        cadastroButton.underline()
     }
     
     func configuraConstraints(){
@@ -155,4 +157,18 @@ class LoginView: UIView {
             ])
             
         }
+}
+
+extension UIButton {
+    func underline() {
+        if let textString = self.titleLabel?.text {
+
+            let attributedString = NSMutableAttributedString(string: textString)
+            attributedString.addAttribute(NSAttributedString.Key.underlineStyle,
+                                          value: NSUnderlineStyle.single.rawValue,
+                                          range: NSRange(location: 0, length: textString.count))
+            self.setAttributedTitle(attributedString, for: .normal)
+        }
+
+    }
 }
