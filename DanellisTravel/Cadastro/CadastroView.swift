@@ -83,6 +83,7 @@ class CadastroView: UIView {
         let text = UITextField()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.backgroundColor = .white
+        text.isSecureTextEntry = true
         return text
     }()
     

@@ -7,11 +7,6 @@
 
 import Foundation
 
-enum ServiceeErrorr: Error {
-    case invalidURL
-    case network(Error?)
-}
-
 class CadastroRequest {
     
     func apiCall(model: CadastroModel, callback: @escaping(Result<Any, ServiceError>) -> Void) {

@@ -26,8 +26,9 @@ class CadastroController: UIViewController {
     }
     
     func getData() {
-        guard let email = customView?.emailText.text, let name = customView?.nameText.text, let password = customView?.passwordText.text, let phone = customView?.phoneText.text, let username = customView?.usernameText.text else { return }
-        model = CadastroModel(email: email, name: name, password: password, phone: phone, username: username)
+        guard let email = customView?.emailText.text, let name = customView?.nameText.text,  let phone = customView?.phoneText.text, let username = customView?.usernameText.text, let secureTextField = customView?.passwordText, let text = secureTextField.text else { return }
+        let unmaskedString = NSString(string: text)
+        model = CadastroModel(email: email, name: name, password: unmaskedString as String, phone: phone, username: username)
     }
     
     func checkTexts() -> Bool{
