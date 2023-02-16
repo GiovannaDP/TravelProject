@@ -39,7 +39,6 @@ class LoginController: UIViewController {
         
         guard let secureTextField = customView?.passwordText, let text = secureTextField.text, let username = customView?.usernameText.text else { return }
             let unmaskedString = NSString(string: text)
-            let unmaskedText = unmaskedString.replacingOccurrences(of: "\u{25CF}", with: "")
         
         model = LoginModel(password: unmaskedString as String, username: username)
     }
