@@ -1,0 +1,42 @@
+
+{
+        "voo": [{
+                "id": 1,
+                "origem": "Pacote Natal",
+                "destino": "Aéreo + Hotel com café",
+                "asset": "natal-brasil",
+                "compainha": "teste",
+                "preco": 899,
+                "cancelamento": "Cancelamento Grátis!"
+            },
+            {
+                "id": 2,
+                "origem": "Pacote Natal",
+                "destino": "Aéreo + Hotel com café",
+                "asset": "natal-brasil",
+                "compainha": "teste",
+                "preco": 899,
+                "cancelamento": "Cancelamento Grátis!"
+            },
+            {
+                "id": 3,
+                "origem": "Pacote Natal",
+                "destino": "Aéreo + Hotel com café",
+                "asset": "natal-brasil",
+                "compainha": "teste",
+                "preco": 899,
+                "cancelamento": "Cancelamento Grátis!"
+            },
+            {
+                "id": 4,
+                "origem": "Pacote Natal",
+                "destino": "Aéreo + Hotel com café",
+                "asset": "natal-brasil",
+                "compainha": "teste",
+                "preco": 899,
+                "cancelamento": "Cancelamento Grátis!"
+            }
+        ]
+}
+
+
