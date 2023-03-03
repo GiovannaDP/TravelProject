@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol PacotesCellControllerDelegate: AnyObject {
-    func didSelectView(_ viagem: Viagem?)
+    func didSelectView(_ viagem: PacotesViewModel?)
 }
 
 class PacotesCellController: UITableViewCell {
@@ -17,10 +17,5 @@ class PacotesCellController: UITableViewCell {
     private var customView: PacotesCellView = PacotesCellView()
     
     weak var delegate: PacotesCellControllerDelegate?
-    private var viagens: [Viagem]?
-    
-    func configuraCelula(_ viagem: Viagem?) {
-        customView.configuraCelula(viagem)
-    }
 
 }

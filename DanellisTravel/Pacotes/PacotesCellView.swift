@@ -150,12 +150,12 @@ class PacotesCellView: UITableViewCell {
         mainView.addSubview(firstParcelasLabel)
     }
     
-    func configuraCelula(_ viagem: Viagem?) {
-        firstImageView.image = UIImage(named: viagem?.asset ?? "")
-        firstTituloVigemLabel.text = viagem?.titulo ?? ""
-        firstSubtituloVigemLabel.text = viagem?.subtitulo ?? ""
-        firstPrecoLabel.text = "R$ \(viagem?.preco ?? 0)"
-        
+    func configuraCelula(_ viagem: PacotesViewModel?) {
+//        firstImageView.image = UIImage(named: viagem?.asset ?? "")
+//        firstTituloVigemLabel.text = viagem?.titulo ?? ""
+//        firstSubtituloVigemLabel.text = viagem?.subtitulo ?? ""
+//        firstPrecoLabel.text = "R$ \(viagem?.preco ?? 0)"
+//
         
         DispatchQueue.main.async {
             self.mainView.addSombra()
