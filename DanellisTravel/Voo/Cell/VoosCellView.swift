@@ -115,7 +115,7 @@ class VoosCellView: UITableViewCell {
         vagasRestantesLabel.text = "\(viagem?.vacancies ?? 0) vagas restantes"
         departureDateLabel.text = viagem?.departureDate ?? ""
         returnDateLabel.text = viagem?.returnDate ?? ""
-        precoLabel.text = "R$ \(viagem?.price ?? 0)"
+        precoLabel.text = "R$\(viagem?.price ?? 0)"
 
         
         DispatchQueue.main.async {
@@ -148,12 +148,8 @@ class VoosCellView: UITableViewCell {
             self.returnDateLabel.centerYAnchor.constraint(equalTo: departureDateLabel.centerYAnchor),
             
             self.precoLabel.topAnchor.constraint(equalTo: departureDateLabel.bottomAnchor, constant: 10),
-            self.precoLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 20),
-            self.precoLabel.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -10)
-    
+            self.precoLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 20)
             ])
-            
         }
-
 }
 

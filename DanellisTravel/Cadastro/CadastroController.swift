@@ -44,6 +44,10 @@ class CadastroController: UIViewController {
         return false
     }
 
+    func routeToLogin() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @objc func cadastro(_ sender: UIButton) {
         debugPrint("cadastrooo")
         if checkTexts() {
@@ -60,6 +64,7 @@ class CadastroController: UIViewController {
                             print(error)
                         case let .success(data):
                             print(data)
+                            self.routeToLogin()
                         }
                     }
                 })
