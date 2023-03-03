@@ -55,11 +55,11 @@ enum VooViewModel {
     
     struct Imagens: Codable {
         let id: Int
-        let name: String
+        let image: String
         
         enum CodingKeys: String, CodingKey {
             case id
-            case name
+            case image
         }
     }
 }

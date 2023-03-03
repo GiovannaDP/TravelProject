@@ -16,7 +16,6 @@ class VoosCellView: UITableViewCell {
         
         setupView()
         configuraConstraints()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -52,8 +51,8 @@ class VoosCellView: UITableViewCell {
     lazy var firstImageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentMode = .scaleAspectFit
-        view.image = UIImage(systemName: "car")
+        view.contentMode = .scaleToFill
+        view.image = UIImage(systemName: "Londres-1")
         return view
     }()
     
@@ -61,7 +60,7 @@ class VoosCellView: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Londres"
-        label.font = UIFont(name: "IowanOldStyle-Bold", size: 16)
+        label.font = UIFont(name: "IowanOldStyle-Bold", size: 20)
         return label
     }()
     
@@ -85,6 +84,7 @@ class VoosCellView: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Vagas restantes 10"
+        label.textColor = .red
         label.font = UIFont(name: "IowanOldStyle-Roman", size: 14)
         return label
     }()
@@ -110,7 +110,7 @@ class VoosCellView: UITableViewCell {
     }
     
     func configuraCelula(_ viagem: VooViewModel.Voo?) {
-//        firstImageView.image = UIImage(named: viagem?.asset ?? "")
+        firstImageView.image = UIImage(named: viagem?.images[0].image ?? "")
         tituloVooLabel.text = viagem?.destiny ?? ""
         vagasRestantesLabel.text = "\(viagem?.vacancies ?? 0) vagas restantes"
         departureDateLabel.text = viagem?.departureDate ?? ""
@@ -133,7 +133,7 @@ class VoosCellView: UITableViewCell {
             self.firstImageView.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 20),
             self.firstImageView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor),
             self.firstImageView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor),
-            self.firstImageView.heightAnchor.constraint(equalToConstant: 100),
+            self.firstImageView.heightAnchor.constraint(equalToConstant: 200),
 
             self.tituloVooLabel.topAnchor.constraint(equalTo: firstImageView.bottomAnchor, constant: 15),
             self.tituloVooLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 20),
