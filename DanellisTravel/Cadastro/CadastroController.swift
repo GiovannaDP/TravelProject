@@ -25,6 +25,10 @@ class CadastroController: UIViewController {
         customView?.cadastroButton.addTarget(self, action: #selector(cadastro), for: .touchUpInside)
     }
     
+    func routeToLogin() {
+           self.navigationController?.popViewController(animated: true)
+       }
+    
     func getData() {
         guard let email = customView?.emailText.text, let name = customView?.nameText.text,  let phone = customView?.phoneText.text, let username = customView?.usernameText.text, let secureTextField = customView?.passwordText, let text = secureTextField.text else { return }
         let unmaskedString = NSString(string: text)
@@ -60,6 +64,7 @@ class CadastroController: UIViewController {
                             print(error)
                         case let .success(data):
                             print(data)
+                            self.routeToLogin()
                         }
                     }
                 })

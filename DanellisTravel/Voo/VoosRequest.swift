@@ -11,68 +11,29 @@ import UIKit
 class VoosRequest {
     
     func apiCall(callback: @escaping(Result<Any, ServiceError>) -> Void) {
-        
-        var listaVoos: [VooViewModel.Voo] = []
-        let url = Bundle.main.url(forResource: "voos-response", withExtension: "json")
-        let data = NSData(contentsOf: url!)
-        
-        do {
-            let object = try JSONSerialization.jsonObject(with: data! as Data, options: .allowFragments)
-            if let dictionary = object as? [String: AnyObject] {
-                readJSONObject(object: dictionary)
-            }
-        } catch {
-            // Handle Error
+        guard let url = URL(string: "http://localhost:8080/travel/allFlights") else {
+            return
         }
+
+        var request = URLRequest(url: url)
         
-        func readJSONObject(object: [String: AnyObject]) {
-            guard let voos = object["voo"] as? [[String: AnyObject]] else { return }
-            for voo in voos {
-                guard let id = voo["id"] as? Int,
-                    let origem = voo["origem"] as? String,
-                let destino = voo["destino"] as? String,
-                let asset = voo["asset"] as? String,
-                let compainha = voo["compainha"] as? String,
-                let preco = voo["preco"] as? Int,
-                let cancelamento = voo["cancelamento"] as? String else { break }
-                let response = VooViewModel.Voo(id: id, origem: origem, destino: destino, asset: asset, companhia: compainha, preco: preco, cancelamento: cancelamento)
-                listaVoos.append(response)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                callback(.failure(.network(error)))
+                return
             }
             
-            debugPrint(listaVoos)
+            do {
+                let vooResponse = try JSONDecoder().decode([VooViewModel.Voo].self, from: data)
+                callback(.success(vooResponse))
+                
+            } catch {
+                callback(.failure(.decodeFail(error)))
+            }
         }
-        //        guard let url = URL(string: "http://localhost:8080/travel/user") else {
-        //            return
-        //        }
-        //
-        //        var urlComponents = URLComponents(string: "http://localhost:8080/travel/user")!
-        //
-        //
-        //        var request = URLRequest(url: url)
-        //
-        //        request.httpMethod = "POST"
-        //        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        //        let body : [String: AnyHashable] = [
-        //            "email": model.email,
-        //            "name": model.name,
-        //            "password": model.password,
-        //            "phone": model.phone,
-        //            "username": model.username
-        //        ]
-        //        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
-        
-        //        guard let operation = "voos-response" else { return }
-        //        guard let response = VooViewModel.Voo.parse(jso)
-        //        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-        //            guard let data = data else {
-        //                callback(.failure(.network(error)))
-        //                return
-        //            }
-        //
-        //            let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
-        //            callback(.success(json))
-        //        }
-        //        task.resume()
-        //    }
+        task.resume()
     }
 }
