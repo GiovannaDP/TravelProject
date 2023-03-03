@@ -15,7 +15,6 @@ enum HotelViewModel {
         let local: String
         let dataChegada: String
         let dataSaida: String
-        let asset: String
         let nota: Double
         let precoDiaria: Double
         let images: [Imagens]
@@ -27,7 +26,6 @@ enum HotelViewModel {
             case local = "location"
             case dataChegada = "departureDate"
             case dataSaida = "returnDate"
-            case asset
             case nota = "rate"
             case precoDiaria = "dailyPrice"
             case images
@@ -49,11 +47,11 @@ enum HotelViewModel {
     
     struct Imagens: Codable {
         let id: Int
-        let name: String
+        let image: String
         
         enum CodingKeys: String, CodingKey {
             case id
-            case name
+            case image
         }
     }
 }
