@@ -9,11 +9,16 @@ import Foundation
 import UIKit
 
 class TelaInicialComprasController: UIViewController, PacotesCellControllerDelegate {
-    func didSelectView(_ viagem: Viagem?) {
-        //
+    func didSelectView(_ viagem: PacotesViewModel?) {
+        //teste
     }
+    
+
     private var customView: TelaInicialComprasView? = nil
     private var button: String? = nil
+    private var pacotesModel: [PacotesViewModel.pacote?] = []
+    private var voosModel: [VooViewModel.Voo?] = []
+    private var hoteisModel: [HotelViewModel.hotel?] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +40,8 @@ class TelaInicialComprasController: UIViewController, PacotesCellControllerDeleg
     }
     
     func configuraTableView() {
-        customView?.tableView.register(PacotesCellView.self, forCellReuseIdentifier: "PacotesCellView")
+        customView?.tableView.register(VoosCellView.self, forCellReuseIdentifier: "VoosCellView")
+        customView?.tableView.register(HoteisCellView.self, forCellReuseIdentifier: "HoteisCellView")
         customView?.tableView.dataSource = self
         customView?.tableView.delegate = self
     }
@@ -43,22 +49,16 @@ class TelaInicialComprasController: UIViewController, PacotesCellControllerDeleg
     @objc func pacotes(_ sender: UIButton) {
         button = "pacotes"
         checkButton()
-        debugPrint(button)
-        
     }
     
     @objc func voos(_ sender: UIButton) {
         button = "voos"
         checkButton()
-        
-        debugPrint(button)
     }
     
     @objc func hoteis(_ sender: UIButton) {
         button = "hoteis"
         checkButton()
-        debugPrint(button)
-        
     }
     
     func checkButton() {
@@ -67,6 +67,22 @@ class TelaInicialComprasController: UIViewController, PacotesCellControllerDeleg
             customView?.buttonPacotes.isSelected = true
             customView?.buttonVoos.isSelected = false
             customView?.buttonHoteis.isSelected = false
+            
+            do {
+                let service = PacotesRequest()
+                service.apiCall(callback: { result in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case let .failure(error):
+                            print(error)
+                        case let .success(data):
+                            self.pacotesModel = data as? [PacotesViewModel.pacote] ?? []
+                            print(self.pacotesModel)
+                        }
+                    }
+                })
+            }
+            
         } else if button == "voos" {
             customView?.buttonVoos.isSelected = true
             customView?.buttonPacotes.isSelected = false
@@ -80,13 +96,12 @@ class TelaInicialComprasController: UIViewController, PacotesCellControllerDeleg
                         case let .failure(error):
                             print(error)
                         case let .success(data):
-                            print(data)
+                            self.voosModel = data as? [VooViewModel.Voo] ?? []
+                            print(self.voosModel)
                         }
                     }
                 })
             }
-            
-            
         } else {
             customView?.buttonHoteis.isSelected = true
             customView?.buttonVoos.isSelected = false
@@ -100,75 +115,81 @@ class TelaInicialComprasController: UIViewController, PacotesCellControllerDeleg
                         case let .failure(error):
                             print(error)
                         case let .success(data):
-                            print(data)
+                            self.hoteisModel = data as? [HotelViewModel.hotel] ?? []
+                            print(self.hoteisModel)
                         }
                     }
                 })
             }
         }
-    }
-    
-    func irParaDetalhes(_ viagem: Viagem?) {
-//        if let viagemSelecionada = viagem {
-//            let detalheController = DetalheViewController.instanciar(viagemSelecionada)
-//            navigationController?.pushViewController(detalheController, animated: true)
-//        }
+        customView?.tableView.reloadData()
     }
 }
 
-extension PacotesController: UITableViewDataSource {
+extension TelaInicialComprasController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return secaoDeViagens?.count ?? 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return secaoDeViagens?[section].viagens.count ?? 0
+        switch button {
+        case "voos":
+            return voosModel.count
+        case "pacotes":
+            return pacotesModel.count
+        case "hoteis":
+            return hoteisModel.count
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone ? 350 : 475
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let viewModel = secaoDeViagens?[indexPath.section]
-        
-        
-        switch viewModel?.tipo {
-        case .pacotes:
-        
-            guard let celulaViagem = tableView.dequeueReusableCell(withIdentifier: "PacotesCellView", for: indexPath) as? PacotesCellView else {
+        if button == "voos" {
+            guard let celulaViagem = tableView.dequeueReusableCell(withIdentifier: "VoosCellView", for: indexPath) as? VoosCellView else {
+               fatalError("error to create ViagemTableViewCell")
+           }
+            
+            if voosModel.isEmpty {
+                return UITableViewCell()
+            } else {
+                celulaViagem.configuraCelula(voosModel[indexPath.row])
+                return celulaViagem
+            }
+            
+            
+        } else if button == "pacotes" {
+            guard let celulaViagem = tableView.dequeueReusableCell(withIdentifier: "VoosCellView", for: indexPath) as? VoosCellView else {
                 fatalError("error to create ViagemTableViewCell")
             }
             
-            celulaViagem.configuraCelula(viewModel?.viagens[indexPath.row])
-
-            return celulaViagem
-            
-        default:
             return UITableViewCell()
+            
+            
+        } else {
+            guard let celulaViagem = tableView.dequeueReusableCell(withIdentifier: "HoteisCellView", for: indexPath) as? HoteisCellView else {
+               fatalError("error to create ViagemTableViewCell")
+           }
+            if hoteisModel.isEmpty {
+                return UITableViewCell()
+            } else {
+                celulaViagem.configuraCelula(hoteisModel[indexPath.row])
+                return celulaViagem
+            }
         }
     }
 }
 
-extension PacotesController: UITableViewDelegate {
+extension TelaInicialComprasController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        let viewModel = secaoDeViagens?[indexPath.section]
-//        
-//        switch viewModel?.tipo {
-//        case .pacotes:
-//            let viagemSelecionada = viewModel?.viagens[indexPath.row]
-//            irParaDetalhes(viagemSelecionada)
-//        default: break
-//        }
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone ? 400 : 475
-//    }
 }
-
-//extension PacotesController: OfertaTableViewCellDelegate {
-//    func didSelectView(_ viagem: Viagem?) {
-//        irParaDetalhes(viagem)
-//    }
-//}

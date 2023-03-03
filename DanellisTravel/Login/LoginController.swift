@@ -45,10 +45,11 @@ class LoginController: UIViewController {
     
     func navigateToApp(user: UserResponse) {
         if user.profileType == "CPF" {
-            let pacotes = PacotesController()
-            self.navigationController!.pushViewController(pacotes, animated: true)
+            let pacotes = TelaInicialComprasController()
+            self.navigationController?.pushViewController(pacotes, animated: true)
         } else {
-            //navigate to app vendas
+            let telaInicialVendas = TelaInicialVendasController()
+            self.navigationController?.pushViewController(telaInicialVendas, animated: true)
         }
     }
     
