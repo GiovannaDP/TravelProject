@@ -19,6 +19,14 @@ class CadastroController: UIViewController {
         buildView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        customView?.usernameText.text = ""
+        customView?.passwordText.text = ""
+        customView?.nameText.text = ""
+        customView?.phoneText.text = ""
+        customView?.emailText.text = ""
+    }
+    
     func buildView() {
         view = CadastroView()
         customView = view as? CadastroView

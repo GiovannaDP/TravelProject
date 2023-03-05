@@ -250,6 +250,8 @@ class VooView: UIView {
         bagagemView.addSubview(iconBagagem)
         
         firstView.addSubview(comprarButton)
+        
+        comprarButton.addCorner()
     }
 
     

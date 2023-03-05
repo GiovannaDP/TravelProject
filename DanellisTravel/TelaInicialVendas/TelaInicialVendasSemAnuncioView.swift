@@ -1,5 +1,5 @@
 //
-//  TelaInicialVendasView.swift
+//  TelaInicialVendasSemAnuncioView.swift
 //  DanellisTravel
 //
 //  Created by Giovanna Danelli Pau on 22/02/23.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class TelaInicialVendasView: UIView {
+class TelaInicialVendasSemAnuncioView: UIView {
     
     init() {
         super.init(frame: .zero)

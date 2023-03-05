@@ -18,6 +18,11 @@ class LoginController: UIViewController {
         buildView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        customView?.usernameText.text = ""
+        customView?.passwordText.text = ""
+    }
+    
     func buildView() {
         view = LoginView()
         customView = view as? LoginView
@@ -25,7 +30,7 @@ class LoginController: UIViewController {
         customView?.cadastroButton.addTarget(self, action: #selector(cadastro), for: .touchUpInside)
     }
     
-    func checkTexts() -> Bool{
+    func checkTexts() -> Bool {
         if customView?.usernameText.text?.count == 11 || customView?.usernameText.text?.count == 14 {
             
             guard let numberPassword = customView?.passwordText.text?.count else { return false }
@@ -36,7 +41,6 @@ class LoginController: UIViewController {
     }
     
     func getData() {
-        
         guard let secureTextField = customView?.passwordText, let text = secureTextField.text, let username = customView?.usernameText.text else { return }
             let unmaskedString = NSString(string: text)
         
@@ -48,7 +52,7 @@ class LoginController: UIViewController {
             let pacotes = TelaInicialComprasController()
             self.navigationController?.pushViewController(pacotes, animated: true)
         } else {
-            let telaInicialVendas = TelaInicialVendasController()
+            let telaInicialVendas = TelaInicialVendasSemAnuncioController()
             self.navigationController?.pushViewController(telaInicialVendas, animated: true)
         }
     }
@@ -87,7 +91,5 @@ class LoginController: UIViewController {
         
         let vc = CadastroController()
         self.navigationController!.pushViewController(vc, animated: true)
-
-
     }
 }
