@@ -35,7 +35,8 @@ class VooView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.text = "Voo"
-        label.font = UIFont(name: "IowanOldStyle-Bold", size: 32)
+        label.numberOfLines = 2
+        label.font = UIFont(name: "IowanOldStyle-Bold", size: 28)
         label.textColor = .black
         return label
     }()
@@ -264,6 +265,8 @@ class VooView: UIView {
             
             self.titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
             self.titleLabel.centerXAnchor.constraint(equalTo: self.firstView.centerXAnchor),
+            self.titleLabel.leadingAnchor.constraint(equalTo: firstView.leadingAnchor, constant: 20),
+            self.titleLabel.trailingAnchor.constraint(equalTo: firstView.trailingAnchor, constant: -20),
             
             self.imageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             self.imageView.leadingAnchor.constraint(equalTo: firstView.leadingAnchor, constant: 10),

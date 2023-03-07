@@ -8,10 +8,7 @@
 import Foundation
 import UIKit
 
-class TelaInicialComprasController: UIViewController, PacotesCellControllerDelegate {
-    func didSelectView(_ viagem: PacotesViewModel?) {
-        //teste
-    }
+class TelaInicialComprasController: UIViewController{
     
 
     private var customView: TelaInicialComprasView? = nil
@@ -124,6 +121,20 @@ class TelaInicialComprasController: UIViewController, PacotesCellControllerDeleg
         }
         customView?.tableView.reloadData()
     }
+    
+    func irParaDetalhesVoo(_ viagem: VooViewModel.Voo?) {
+        if let viagemSelecionada = viagem {
+            let vooController = VooViewController.instanciar(viagemSelecionada)
+            navigationController?.pushViewController(vooController, animated: true)
+        }
+    }
+    
+    func irParaDetalhesHotel(_ viagem: HotelViewModel.hotel?) {
+        if let viagemSelecionada = viagem {
+            let hotelController = HotelViewController.instanciar(viagemSelecionada)
+            navigationController?.pushViewController(hotelController, animated: true)
+        }
+    }
 }
 
 extension TelaInicialComprasController: UITableViewDataSource {
@@ -189,6 +200,17 @@ extension TelaInicialComprasController: UITableViewDataSource {
 extension TelaInicialComprasController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch button {
+        case "voos":
+            let viewModel = voosModel[indexPath.row]
+            irParaDetalhesVoo(viewModel)
+        case "hoteis":
+            let viewModel = hoteisModel[indexPath.row]
+            irParaDetalhesHotel(viewModel)
+        default:
+            debugPrint("outros")
+        }
         
     }
     
